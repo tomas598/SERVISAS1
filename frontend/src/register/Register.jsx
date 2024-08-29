@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
   const [data, setData] = useState({
@@ -8,6 +9,8 @@ export const Register = () => {
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const handleInput = (e) => {
     setData((prevData) => ({
@@ -25,6 +28,7 @@ export const Register = () => {
         { name, email, password }
       );
       console.log(response);
+      navigate("/login");
     } catch (error) {
       console.error(error);
     }
